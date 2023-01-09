@@ -45,4 +45,15 @@ userRouter.post("/login", async (req, res, next) => {
     }
 });
 
+//마이페이지
+userRouter.get("/", /*loginRequired*/ async function (req, res, next) {
+    try{
+        const email = req.eamil;
+        const currentUserInfo = await userService.getUserData(email);
+        res.status(200).json(currentUserInfo);
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = userRouter;

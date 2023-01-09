@@ -11,7 +11,7 @@ class UserService {
 
   // 회원가입
   async addUser(userInfo) {
-    const { email, nickname, profile_image, password } = userInfo;
+    const { email, nickname, password } = userInfo;
 
     //중복확인
     const emailResult = await this.User.findOne({
@@ -32,7 +32,7 @@ class UserService {
     // 우선 비밀번호 해쉬화(암호화)
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUserInfo = { email, nickname, password: hashedPassword, profile_image };
+    const newUserInfo = { email, nickname, password: hashedPassword };
 
     // db에 저장
     const createdNewUser = await this.User.create(newUserInfo);

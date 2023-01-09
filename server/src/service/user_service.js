@@ -74,8 +74,10 @@ class UserService {
   }
 
     //마이페이지
-    async getUserData(email) {
-        const user = await this.User.findOne({attributes: ['email']}); //email만 조회
+    async getUserData(id) {
+        const user = await this.User.findOne({
+            attributes: [ 'email', 'nickname', 'profile_image' ],
+            where: { id }});
     
     if(!user){
         throw new Error("가입 내역이 없습니다.");

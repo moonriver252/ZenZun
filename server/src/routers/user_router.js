@@ -2,7 +2,7 @@ const express = require("express");
 const userRouter = express.Router();
 //const upload = require("../middlewares/upload");
 
-// const { loginRequired } = require("../middlewares/login_required");
+const { loginRequired } = require("../middlewares/login_required");
 const {
    userService,
 //   userTagService,
@@ -46,10 +46,10 @@ userRouter.post("/login", async (req, res, next) => {
 });
 
 //마이페이지
-userRouter.get("/user", /*loginRequired*/ async function (req, res, next) {
+userRouter.get("/user",loginRequired, async function (req, res, next) {
     try{
-        const email = req.eamil;
-        const currentUserInfo = await userService.getUserData(email);
+        const userId = req.userId;
+        const currentUserInfo = await userService.getUserData(userId);
         res.status(200).json(currentUserInfo);
     } catch (error) {
         next(error);
@@ -57,7 +57,7 @@ userRouter.get("/user", /*loginRequired*/ async function (req, res, next) {
 });
 
 //마이페이지 수정
-userRouter.patch("/user",/*loginRequired,*/ /*upload.single("profile_image")*/ async (req, res, next) => {
+userRouter.patch("/user", loginRequired, /*upload.single("profile_image")*/ async (req, res, next) => {
     try {
         const { email, nickname, password } = req.body;
         const { checkPassword } = req.body;

@@ -31,4 +31,18 @@ userRouter.post("/", async (req, res, next) => {
         }
 });
 
+
+//로그인
+userRouter.post("/login", async (req, res, next) => {
+    try{
+        const email = req.body.email;
+        const password = req.body.password;
+
+        const userToken = await userService.getUserToken({ email, password });
+        res.status(200).json({userToken:userToken.token});
+    } catch(error){
+        next(error)
+    }
+});
+
 module.exports = userRouter;

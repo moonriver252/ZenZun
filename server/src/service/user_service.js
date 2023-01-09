@@ -72,6 +72,16 @@ class UserService {
     
     return { token };
   }
+
+    //마이페이지
+    async getUserData(email) {
+        const user = await this.User.findOne({attributes: ['email']}); //email만 조회
+    
+    if(!user){
+        throw new Error("가입 내역이 없습니다.");
+    }
+    return user;
+  }
 }
 
 module.exports = new UserService(User);

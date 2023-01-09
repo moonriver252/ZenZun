@@ -1,6 +1,6 @@
 const { User } = require("../db");
 const bcrypt = require("bcrypt")
-//const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 
 class UserService {
@@ -38,6 +38,39 @@ class UserService {
     const createdNewUser = await this.User.create(newUserInfo);
 
     return createdNewUser;
+  }
+
+  async getUserToken(loginInfo) {
+    const { email, password } = loginInfo;
+
+    const user = await this.User.findOne({
+        where: { email },
+    });
+    if (!user) {
+        throw new Error(
+            "가입되지 않은 이메일 입니다."
+        );
+    }
+
+    const correctPasswordHash = user.password;
+
+    const isPasswordCorrect = await bcrypt.compare(
+        password,
+        correctPasswordHash
+    );
+
+    if (!isPasswordCorrect) {
+        throw new Error(
+            "비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요."
+        );
+    }
+
+    const secretKey = process.env.JWT_SECRET_KEY
+
+    //const token = jwt.sign({ userId: user.dataValues.id, exp: Math.floor(Date.now()/1000)+(60 * 60 * 24) }, secretKey);
+    const token = jwt.sign({ userId: user.id }, secretKey);
+    
+    return { token };
   }
 }
 

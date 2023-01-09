@@ -11,7 +11,7 @@ const {
 
 
 //회원가입
-userRouter.post("/", async (req, res, next) => {
+userRouter.post("/user", async (req, res, next) => {
     try {
         const email = req.body.email;
         const nickname = req.body.nickname;

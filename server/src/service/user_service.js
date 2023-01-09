@@ -117,9 +117,9 @@ class UserService {
         return userChange
     }
     catch (err){
-        if(err){
-            console.log(err)
-        }
+        if(err=isPasswordSame){
+            console.log("현재 비밀번호가 일치하지 않습니다.", err);}
+        
     }
   }
 

@@ -56,4 +56,30 @@ userRouter.get("/user", /*loginRequired*/ async function (req, res, next) {
     }
 });
 
+//마이페이지 수정
+userRouter.patch("/user",/*loginRequired,*/ /*upload.single("profile_image")*/ async (req, res, next) => {
+    try {
+        const { email, nickname, password } = req.body;
+        const { checkPassword } = req.body;
+        if (!checkPassword) {
+            throw new Error("정보를 변경하려면, 현재의 비밀번호가 필요합니다.");
+        }
+        const userInfoRequired = { email, checkPassword };
+        const updateData = {
+            ...(nickname && { nickname }),
+            /*...(profile_image && { profile_image }),*/
+            ...(password && { password })
+        };
+
+        const updatedUserInfo = await userService.setUser(
+            userInfoRequired,
+            updateData
+        );
+
+        res.status(200).json(updatedUserInfo);
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = userRouter;

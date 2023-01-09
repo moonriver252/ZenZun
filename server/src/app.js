@@ -1,3 +1,5 @@
+//sequelize를 사용해 express와 MySQL을 연결
+
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
@@ -7,8 +9,6 @@ const { sequelize } = require('./db');
 
 const app = express();
 
-
-// app.set('port', process.env.PORT || 3000);
 
 sequelize.sync({ force: false })
   .then(() => {
@@ -23,9 +23,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
-// app.listen(app.get('port'), () => {
-//   console.log(app.get('port'), '번 포트에서 대기 중');
-// });
 
 module.exports = {app}

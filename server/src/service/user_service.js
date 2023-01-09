@@ -82,6 +82,47 @@ class UserService {
     }
     return user;
   }
+
+
+  //마이페이지 수정
+  async setUser(userInfoRequired, updateData){
+    try {
+        const { email, checkPassword } = userInfoRequired;
+        const user = await this.User.findOne({
+            where: { id: email }
+        });
+        if (!user) {
+            throw new Error("가입 내역이 없습니다.");
+        }
+        const hashedPassword = user.password;
+        const isPasswordSame = await bcrypt.compare(
+            checkPassword,
+            hashedPassword
+        );
+
+        if (!isPasswordSame) {
+            throw new Error("현재 비밀번호가 일치하지 않습니다.")
+        }
+
+        const { password } = updateData;
+        if (password) {
+            const newHashedPassword = await bcrypt.hash(password, 10);
+            updateData.password = newHashedPassword;
+        }
+
+        const userChange = await this.User.update(updateData, {
+            where: { id: email }
+        });
+
+        return userChange
+    }
+    catch (err){
+        if(err){
+            console.log(err)
+        }
+    }
+  }
+
 }
 
 module.exports = new UserService(User);

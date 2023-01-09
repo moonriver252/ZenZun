@@ -3,7 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 
 
-const { sequelize } = require('./db/models');
+const { sequelize } = require('./db');
 
 const app = express();
 

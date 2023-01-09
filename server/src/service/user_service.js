@@ -89,9 +89,9 @@ class UserService {
   //마이페이지 수정
   async setUser(userInfoRequired, updateData){
     try {
-        const { email, checkPassword } = userInfoRequired;
+        const { id, checkPassword } = userInfoRequired;
         const user = await this.User.findOne({
-            where: { id: email }
+            where: { id: id }
         });
         if (!user) {
             throw new Error("가입 내역이 없습니다.");
@@ -113,7 +113,7 @@ class UserService {
         }
 
         const userChange = await this.User.update(updateData, {
-            where: { id: email }
+            where: { id: id }
         });
 
         return userChange
@@ -124,6 +124,20 @@ class UserService {
         
     }
   }
+
+  //회원탈퇴
+  async deleteUserData(id) {
+    const deletedCount = await this.User.destroy({
+      where: { id: id },
+    }); 
+
+    // 삭제에 실패한 경우, 에러 메시지 반환
+    if (!deletedCount) {
+      throw new Error(`${id} 사용자 데이터 삭제에 실패하였습니다.`);
+    }
+    return { result: "success" };
+  }
+
 
 }
 

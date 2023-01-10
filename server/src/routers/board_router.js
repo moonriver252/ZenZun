@@ -8,11 +8,12 @@ const { boardService } = require("../service");
 boardRouter.post("/board", loginRequired, async (req, res, next) => {
     try { 
         const userId = req.userId;
-        const content = req.body.content;
+        const content = req.body;
         const newBoard = await boardService.addBoard(userId, content);
-        const boardId = newBoard.id
-        res.status(201).json({'boardId':boardId})
+        res.status(201).json(newBoard)
     } catch (error) {
         next(error)
     }
 });
+
+module.exports = boardRouter;

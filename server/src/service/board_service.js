@@ -36,6 +36,16 @@ class BoardService {
         
         return updateMyBoard;
     }
+
+        //게시글 삭제 (본인 게시글만 삭제 가능)
+        async deleteBoard(userId, boardId) {
+            const deleteMyBoard = await this.Board.destroy({
+                where: { id: boardId,
+                        user_id: userId }
+            });
+            
+            return deleteMyBoard;
+        }
     
 }
 

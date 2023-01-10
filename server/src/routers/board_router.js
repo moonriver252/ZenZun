@@ -4,7 +4,7 @@ const boardRouter = express.Router();
 const { boardService } = require("../service");
 
 
-//게시글 작성하기
+//게시글 작성
 boardRouter.post("/board", loginRequired, async (req, res, next) => {
     try { 
         const userId = req.userId;
@@ -30,7 +30,7 @@ boardRouter.get("/board", async function (req, res, next) {
     }
 });
 
-//게시글 수정하기
+//게시글 수정 (본인 게시글만 수정 가능)
 boardRouter.patch("/board/:board_id", loginRequired, async (req, res, next) => {
     try {
       const userId = req.userId;
@@ -45,5 +45,20 @@ boardRouter.patch("/board/:board_id", loginRequired, async (req, res, next) => {
     }
   });
   
+
+  //게시글 삭제하기 (본인 게시글만 삭제 가능)
+  boardRouter.delete("/board/:board_id", loginRequired, async (req, res, next) => {
+    try {
+      const userId = req.userId;
+      const boardId = req.params.board_id;
+
+      const deleteBoard = await boardService.deleteBoard(userId, boardId);
+  
+      res.status(201).json(deleteBoard);
+    } catch (error) {
+      next(error);
+    }
+  });
+
 
 module.exports = boardRouter;

@@ -10,7 +10,7 @@ boardRouter.post("/board", loginRequired, async (req, res, next) => {
         const userId = req.userId;
         const content = req.body;
         const newBoard = await boardService.addBoard(userId, content);
-        
+
         res.status(201).json(newBoard)
     } catch (error) {
         next(error)
@@ -29,5 +29,20 @@ boardRouter.get("/board", async function (req, res, next) {
       next(error);
     }
 });
+
+//게시글 수정하기
+boardRouter.patch("/board/:board_id", loginRequired, async (req, res, next) => {
+    try {
+      const userId = req.userId;
+      const boardId = req.params.board_id;
+      const content = req.body;
+      const patchBoard = await boardService.updateBoard(userId, boardId, content);
+  
+      res.status(201).json(patchBoard);
+    } catch (error) {
+      next(error);
+    }
+  });
+  
 
 module.exports = boardRouter;

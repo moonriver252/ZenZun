@@ -20,9 +20,22 @@ class BoardService {
     //전체 게시글 조회
     async getAllBoard() {
         const board = await this.Board.findAll();
-        
+
         return board;
     }
+
+    async updateBoard(userId, boardId, content) {
+        const love = {
+            ...content,
+            user_id: userId,
+        };
+        const updateMyBoard = await this.Board.update(love, {
+            where: { id: boardId }
+        });
+        
+        return updateMyBoard;
+    }
+    
 }
 
 module.exports = new BoardService(Board);

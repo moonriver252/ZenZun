@@ -24,13 +24,14 @@ class BoardService {
         return board;
     }
 
+    //게시글 수정 (본인 게시글만 수정 가능)
     async updateBoard(userId, boardId, content) {
         const love = {
-            ...content,
-            user_id: userId,
+            ...content
         };
         const updateMyBoard = await this.Board.update(love, {
-            where: { id: boardId }
+            where: { id: boardId,
+                    user_id: userId }
         });
         
         return updateMyBoard;

@@ -36,6 +36,7 @@ boardRouter.patch("/board/:board_id", loginRequired, async (req, res, next) => {
       const userId = req.userId;
       const boardId = req.params.board_id;
       const content = req.body;
+
       const patchBoard = await boardService.updateBoard(userId, boardId, content);
   
       res.status(201).json(patchBoard);

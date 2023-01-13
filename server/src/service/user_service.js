@@ -68,7 +68,6 @@ class UserService {
 
     const secretKey = process.env.JWT_SECRET_KEY
 
-    //const token = jwt.sign({ userId: user.dataValues.id, exp: Math.floor(Date.now()/1000)+(60 * 60 * 24) }, secretKey);
     const token = jwt.sign({ userId: user.id }, secretKey);
     
     return { token };

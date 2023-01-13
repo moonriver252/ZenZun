@@ -62,7 +62,7 @@ class UserService {
 
     if (!isPasswordCorrect) {
         throw new Error(
-            "비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요."
+            "비밀번호가 일치하지 않습니다."
         );
     }
 

@@ -35,7 +35,7 @@ module.exports = class Board extends Sequelize.Model {
             modelName: 'Board',
             tableName: 'board',
             paranoid: false, //삭제시 완전삭제x -> 로그남김
-            charset: 'utf8',
+            charset: 'utf8', //한글
             collate: 'utf8_general_ci',
         });
     }

@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 
 
 class UserService {
-  // 본 파일의 맨 아래에서, new UserService(userModel) 하면, 이 함수의 인자로 전달됨
   constructor(user_model) {
     this.User = user_model;
   }
@@ -73,6 +72,7 @@ class UserService {
     return { token };
   }
 
+
     //마이페이지
     async getUserData(id) {
         const user = await this.User.findOne({
@@ -125,6 +125,7 @@ class UserService {
     }
   }
 
+  
   //회원탈퇴
   async deleteUserData(id) {
     const deletedCount = await this.User.destroy({

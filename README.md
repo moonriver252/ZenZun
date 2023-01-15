@@ -1,3 +1,5 @@
+</br>
+</br>
 <h2>🗒 기술 페이지 🗒</h2>
 구현 가능한 기술이 나열된 사이트 입니다.<br><br>
 
@@ -23,8 +25,7 @@
 9. 배너<br><br>
 
 <h2>💡 사용 스킬 및 툴</h2>
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/node.js-339933?style=flat-square&logo=Node.js&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/node.js-339933?style=flat-square&logo=Node.js&logoColor=white">
 <img src="https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white">
 <img src="https://img.shields.io/badge/sequelize-52B0E7?style=flat-square&logo=Sequelize&logoColor=white">
 <img src="https://img.shields.io/badge/express-000000?style=flat-square&logo=express&logoColor=white">

@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 
 
 class UserService {
-  // 본 파일의 맨 아래에서, new UserService(userModel) 하면, 이 함수의 인자로 전달됨
   constructor(user_model) {
     this.User = user_model;
   }
@@ -40,6 +39,7 @@ class UserService {
     return createdNewUser;
   }
 
+  //로그인
   async getUserToken(loginInfo) {
     const { email, password } = loginInfo;
 
@@ -61,17 +61,17 @@ class UserService {
 
     if (!isPasswordCorrect) {
         throw new Error(
-            "비밀번호가 일치하지 않습니다. 다시 한 번 확인해 주세요."
+            "비밀번호가 일치하지 않습니다."
         );
     }
 
     const secretKey = process.env.JWT_SECRET_KEY
 
-    //const token = jwt.sign({ userId: user.dataValues.id, exp: Math.floor(Date.now()/1000)+(60 * 60 * 24) }, secretKey);
     const token = jwt.sign({ userId: user.id }, secretKey);
     
     return { token };
   }
+
 
     //마이페이지
     async getUserData(id) {
@@ -125,6 +125,7 @@ class UserService {
     }
   }
 
+  
   //회원탈퇴
   async deleteUserData(id) {
     const deletedCount = await this.User.destroy({

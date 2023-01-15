@@ -43,11 +43,11 @@ boardRouter.patch("/board/:board_id", loginRequired, async (req, res, next) => {
     } catch (error) {
       next(error);
     }
-  });
+});
   
 
-  //게시글 삭제하기 (본인 게시글만 삭제 가능)
-  boardRouter.delete("/board/:board_id", loginRequired, async (req, res, next) => {
+//게시글 삭제하기 (본인 게시글만 삭제 가능)
+boardRouter.delete("/board/:board_id", loginRequired, async (req, res, next) => {
     try {
       const userId = req.userId;
       const boardId = req.params.board_id;
@@ -58,7 +58,7 @@ boardRouter.patch("/board/:board_id", loginRequired, async (req, res, next) => {
     } catch (error) {
       next(error);
     }
-  });
+});
 
 
 module.exports = boardRouter;

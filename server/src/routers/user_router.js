@@ -1,6 +1,6 @@
 const express = require("express");
 const userRouter = express.Router();
-
+const awsS3 = require("../middlewares/aws-s3");
 //const upload = require("../middlewares/upload");
 
 const { loginRequired } = require("../middlewares/login_required");
@@ -57,7 +57,7 @@ userRouter.get("/user",loginRequired, async function (req, res, next) {
 });
 
 //마이페이지 수정
-userRouter.patch("/user", loginRequired, /*upload.single("profile_image")*/ async (req, res, next) => {
+userRouter.patch("/user", loginRequired, awsS3.single("profile_image"), async (req, res, next) => {
     try {
         const { nickname, password } = req.body;
         const { checkPassword } = req.body;
@@ -65,10 +65,14 @@ userRouter.patch("/user", loginRequired, /*upload.single("profile_image")*/ asyn
             throw new Error("정보를 변경하려면, 현재의 비밀번호가 필요합니다.");
         }
         const id = req.userId;
+        let profile_image = null;
+        if(req.file){
+          profile_image = req.file.location;
+        }
         const userInfoRequired = { id, checkPassword };
         const updateData = {
             ...(nickname && { nickname }),
-            /*...(profile_image && { profile_image }),*/
+            ...(profile_image && { profile_image }),
             ...(password && { password })
         };
 

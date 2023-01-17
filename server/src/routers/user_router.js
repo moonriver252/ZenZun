@@ -4,16 +4,24 @@ const awsS3 = require("../middlewares/aws-s3");
 //const upload = require("../middlewares/upload");
 
 const { loginRequired } = require("../middlewares/login_required");
+const { mail } = require("../middlewares/mail");
 const {
    userService,
 //   userRefreshTokenService,
 } = require("../service");
 
 
+//이메일 인증
+userRouter.post('/sendEmail', mail, async (req, res) => {
+      res.status(201).json(req.authNum);
+});
+  
+
 //회원가입
 userRouter.post("/user", async (req, res, next) => {
     try {
         const email = req.body.email;
+        const checkNumber = req.body.checkNumber;
         const nickname = req.body.nickname;
         // const profile_image = req.body.profile_image;
         const password = req.body.password;

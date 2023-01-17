@@ -9,6 +9,7 @@
 <h2>📂 구현 완료 (23.01.17 update)</h2>
 <div>
 <li>회원가입</il>
+<li>회원가입시 email 인증(server)</il>
 <li>회원탈퇴</il>
 <li>마이페이지</il>
 <li>프로필 이미지(AWS-S3)</il>
@@ -23,7 +24,7 @@
 
 <h2>📁 구현 예정</h2>
 <div>
-<li>회원가입시 email 인증</il>
+<li>회원가입시 email 인증(client)</il>
 <li>비밀번호 찾기 (email로 새 비밀번호 전송)</il>
 <li>소셜 로그인</il>
 <li>채팅</il>

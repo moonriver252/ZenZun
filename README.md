@@ -27,6 +27,7 @@
 <div>
 <li>회원가입시 email 인증(client)</il>
 <li>소셜 로그인</il>
+<li>리프레시 토큰</il>
 <li>채팅</il>
 <li>지도</il>
 <li>다마고치</il>

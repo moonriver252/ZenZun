@@ -5,7 +5,6 @@ const awsS3 = require("../middlewares/aws-s3");
 
 const { loginRequired } = require("../middlewares/login_required");
 const { mail } = require("../middlewares/mail");
-const { resetPassword } = require("../middlewares/resetPassword");
 const {
    userService,
 //   userRefreshTokenService,
@@ -96,29 +95,7 @@ userRouter.patch("/user", loginRequired, awsS3.single("profile_image"), async (r
     }
 });
 
-//임시 비밀번호 발송
-userRouter.patch("/user/resetPassword", resetPassword, async (req, res, next) => {
-    try {
-        console.log(authNum);
-        const email = req.body.email;
-        const password = req.resetPassword.authNum;
-        
-       
-        const userInfoRequired = { email };
-        const updateData = {
-            ...(authNum && { password })
-        };
 
-        const updatedPasswordInfo = await userService.resetPassword(
-            userInfoRequired,
-            updateData
-        );
-
-        res.status(200).json(updatedPasswordInfo);
-    } catch (error) {
-        next(error);
-    }
-});
 
 //회원탈퇴
 userRouter.delete("/user", loginRequired, async function (req, res, next) {

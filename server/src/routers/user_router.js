@@ -4,7 +4,7 @@ const awsS3 = require("../middlewares/aws-s3");
 //const upload = require("../middlewares/upload");
 
 const { loginRequired } = require("../middlewares/login_required");
-const { mail } = require("../middlewares/mail");
+const { usermail } = require("../middlewares/usermail");
 const {
    userService,
 //   userRefreshTokenService,
@@ -12,7 +12,7 @@ const {
 
 
 //이메일 인증
-userRouter.post('/sendEmail', mail, async (req, res) => {
+userRouter.post('/sendEmail', usermail, async (req, res) => {
       res.status(201).json(req.authNum);
 });
   

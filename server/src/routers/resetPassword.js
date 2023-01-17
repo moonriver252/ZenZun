@@ -12,8 +12,9 @@ const {
 //임시 비밀번호 발송
 resetPasswordRouter.patch("/user/resetPassword", mail, async (req, res, next) => {
   try {
+      const password = req.password;
       const email = req.body.email;
-      const password = Math.random().toString().substr(2, 6);
+      //const password = Math.random().toString().substr(2, 6);
       console.log(password);
       
      

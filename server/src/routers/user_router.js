@@ -11,10 +11,10 @@ const {
 } = require("../service");
 
 
-//이메일 인증
-userRouter.post('/sendEmail', usermail, async (req, res) => {
-      res.status(201).json(req.authNum);
-});
+// //이메일 인증
+// userRouter.post('/sendEmail', usermail, async (req, res) => {
+//       res.status(201).json(req.authNum);
+// });
   
 
 //회원가입

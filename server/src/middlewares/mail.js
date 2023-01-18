@@ -1,12 +1,8 @@
 const nodemailer = require('nodemailer');
-const express = require("express");
-const resetPasswordRouter = express.Router();
 
 const mail = async (req, res, next) => {
   let authNum = Math.random().toString().substr(2, 6);
   const password = authNum;
-  // let password = resetPasswordRouter.password;
-  // console.log(password);
 
   let transporter = nodemailer.createTransport({
     service: 'gmail',

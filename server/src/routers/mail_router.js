@@ -1,20 +1,22 @@
 const express = require("express");
-const resetPasswordRouter = express.Router();
-const nodemailer = require('nodemailer');
+const mailRouter = express.Router();
 const { mail } = require("../middlewares/mail");
+const { usermail } = require("../middlewares/usermail");
 const {
-  userService,
-//   userRefreshTokenService,
+  mailService,
 } = require("../service");
 
 
+//이메일 인증
+mailRouter.post('/sendEmail', usermail, async (req, res) => {
+  res.status(201).json(req.authNum);
+});
 
 //임시 비밀번호 발송
-resetPasswordRouter.patch("/user/resetPassword", mail, async (req, res, next) => {
+mailRouter.patch("/user/resetPassword", mail, async (req, res, next) => {
   try {
       const password = req.password;
       const email = req.body.email;
-      //const password = Math.random().toString().substr(2, 6);
       console.log(password);
       
      
@@ -23,7 +25,7 @@ resetPasswordRouter.patch("/user/resetPassword", mail, async (req, res, next) =>
           ...(password && { password })
       };
 
-      const updatedPasswordInfo = await userService.resetPassword(
+      const updatedPasswordInfo = await mailService.resetPassword(
           userInfoRequired,
           updateData
       );
@@ -34,4 +36,4 @@ resetPasswordRouter.patch("/user/resetPassword", mail, async (req, res, next) =>
   }
 });
 
-module.exports =  resetPasswordRouter;
+module.exports =  mailRouter;

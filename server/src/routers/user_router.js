@@ -4,17 +4,17 @@ const awsS3 = require("../middlewares/aws-s3");
 //const upload = require("../middlewares/upload");
 
 const { loginRequired } = require("../middlewares/login_required");
-const { mail } = require("../middlewares/mail");
+const { usermail } = require("../middlewares/usermail");
 const {
    userService,
 //   userRefreshTokenService,
 } = require("../service");
 
 
-//이메일 인증
-userRouter.post('/sendEmail', mail, async (req, res) => {
-      res.status(201).json(req.authNum);
-});
+// //이메일 인증
+// userRouter.post('/sendEmail', usermail, async (req, res) => {
+//       res.status(201).json(req.authNum);
+// });
   
 
 //회원가입
@@ -94,6 +94,8 @@ userRouter.patch("/user", loginRequired, awsS3.single("profile_image"), async (r
         next(error);
     }
 });
+
+
 
 //회원탈퇴
 userRouter.delete("/user", loginRequired, async function (req, res, next) {

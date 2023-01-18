@@ -1,8 +1,7 @@
 const nodemailer = require('nodemailer');
 
-const mail = async (req, res, next) => {
+const usermail = async (req, res, next) => {
   let authNum = Math.random().toString().substr(2, 6);
-  const password = authNum;
 
   let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -18,8 +17,8 @@ const mail = async (req, res, next) => {
   let mailOptions = await transporter.sendMail({
     from: process.env.NODEMAILER_USER,
     to: req.body.email,
-    subject: '임시 비밀번호 입니다. 로그인 후 비밀번호를 변경해주세요.',
-    text: password,
+    subject: '회원가입을 위한 인증번호를 입력해주세요.',
+    text: authNum,
   });
 
   transporter.sendMail(mailOptions, function (error, info) {
@@ -27,14 +26,13 @@ const mail = async (req, res, next) => {
       console.log(error);
     }
     console.log('Finish sending email : ' + info.response);
-    res.send(password);
+    res.send(authNum);
     transporter.close();
   });
 
-  req.password = password;
-  
+  req.authNum = authNum;
+
   next();
 };
 
-module.exports = { mail };
-
+module.exports = { usermail };

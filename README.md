@@ -3,6 +3,7 @@
 <div align=center>
   <h1>🗒 기술 페이지 🗒</h1>
   <h3>포트폴리오 목적으로 생성한 기술 구현 사이트 입니다.<h3>
+    Nostin: https://decorous-walleye-1fd.notion.site/c39fd1cbc93f412eb1896082d880a542
 </div>
 <br><br>
 

@@ -11,7 +11,7 @@
 <li>회원가입</il>
 <li>회원가입시 email 인증(server)</il>
 <li>로그인</il>
-<li>비밀번호 찾기 (email로 새 비밀번호 전송)</il>
+<li>비밀번호 찾기 (email로 임시 비밀번호 발송)</il>
 <li>마이페이지</il>
 <li>프로필 이미지(AWS-S3)</il>
 <li>정보 수정</il>

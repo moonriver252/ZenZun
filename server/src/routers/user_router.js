@@ -1,21 +1,13 @@
 const express = require("express");
 const userRouter = express.Router();
 const awsS3 = require("../middlewares/aws-s3");
-//const upload = require("../middlewares/upload");
 
 const { loginRequired } = require("../middlewares/login_required");
-const { usermail } = require("../middlewares/usermail");
 const {
    userService,
 //   userRefreshTokenService,
 } = require("../service");
 
-
-// //이메일 인증
-// userRouter.post('/sendEmail', usermail, async (req, res) => {
-//       res.status(201).json(req.authNum);
-// });
-  
 
 //회원가입
 userRouter.post("/user", async (req, res, next) => {
@@ -53,6 +45,7 @@ userRouter.post("/login", async (req, res, next) => {
     }
 });
 
+
 //마이페이지
 userRouter.get("/user",loginRequired, async function (req, res, next) {
     try{
@@ -63,6 +56,7 @@ userRouter.get("/user",loginRequired, async function (req, res, next) {
         next(error);
     }
 });
+
 
 //마이페이지 수정
 userRouter.patch("/user", loginRequired, awsS3.single("profile_image"), async (req, res, next) => {
@@ -94,7 +88,6 @@ userRouter.patch("/user", loginRequired, awsS3.single("profile_image"), async (r
         next(error);
     }
 });
-
 
 
 //회원탈퇴

@@ -1,34 +1,13 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-/*import Header from "./pages/Header";*/
-import Login from "./pages/Login";
-import Homepage from "./pages/Homepage";
-import About from "./pages/About";
-import Register from './pages/Register';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Login from "./pages/Login/Login";
+import Homepage from "./pages/Homepage/Homepage";
+import Mypage from "./pages/Mypage/Mypage";
+import Register from './pages/Register/Register';
+import Board from './pages/Board/Board';
 
 
-const Header = () => {
-  return (
-    <div style={{ backgroundColor: '#3CBBB1', height: '100px' }}>
-      <h1 style={{ textAlign: 'center', lineHeight: '100px', color: 'white' }}>Header</h1>
-    </div>
-  );
-};
-
-const Sidebar = () => {
-  return (
-    <div style={{ backgroundColor: '#FF9F1C', height: '500px', display: 'flex', flexDirection: 'column' }}>
-      <Link to="/register" style={{ padding: '20px', color: 'white' }}>
-        회원가입
-      </Link>
-      <Link to="/login" style={{ padding: '20px', color: 'white' }}>
-        로그인
-      </Link>
-      <Link to="/contact" style={{ padding: '20px', color: 'white' }}>
-        Contact
-      </Link>
-    </div>
-  );
-};
 
 
 function App() {
@@ -41,7 +20,8 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/Mypage" element={<Mypage />} />
+        <Route path="/Board" element={<Board />} />
         <Route path="/page/:id" />
       </Routes>
       </div>

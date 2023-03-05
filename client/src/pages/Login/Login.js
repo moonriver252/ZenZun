@@ -5,7 +5,13 @@ const LoginWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    max-width: 200px;
+  }
 `;
 
 const FormWrapper = styled.form`

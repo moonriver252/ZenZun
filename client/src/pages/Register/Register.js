@@ -5,6 +5,14 @@ const RegisterWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    max-width: 200px;
+  }
 `;
 
 const Input = styled.input`
@@ -17,6 +25,10 @@ const Input = styled.input`
   background-color: #4981c2;
   color: black;
   text-align: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Button = styled.button`
@@ -29,6 +41,10 @@ const Button = styled.button`
   background-color: #a3acbd;
   color: black;
   text-align: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 
   &:hover {
     background-color: #fff;

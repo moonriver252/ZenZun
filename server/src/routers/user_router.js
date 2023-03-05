@@ -13,7 +13,7 @@ const {
 userRouter.post("/user", async (req, res, next) => {
     try {
         const email = req.body.email;
-        const checkNumber = req.body.checkNumber;
+        // const checkNumber = req.body.checkNumber;
         const nickname = req.body.nickname;
         // const profile_image = req.body.profile_image;
         const password = req.body.password;

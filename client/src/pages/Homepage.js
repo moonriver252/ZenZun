@@ -11,7 +11,7 @@ function HomePage() {
       
       <div style={{ display: 'flex', flexDirection: 'row', height: '500px' }}>
         <div style={{ width: '200px', backgroundColor: '##f0f' }}>
-          <ul style={{ listStyleType: 'none', padding: 0 }}>
+          {/* <ul style={{ listStyleType: 'none', padding: 0 }}>
             <li style={{ margin: '10px' }}><a href={"/register"}>회원가입</a></li>
             <li style={{ margin: '10px' }}><a href={"/login"}>로그인</a></li>
             <li style={{ margin: '10px' }}><a href={"/register"}>마이페이지</a></li>
@@ -22,7 +22,7 @@ function HomePage() {
             <li style={{ margin: '10px' }}><a href={"/register"}>지도</a></li>
             <li style={{ margin: '10px' }}><a href={"/register"}>다마고치</a></li>
             <li style={{ margin: '10px' }}><a href={"/register"}>다크모드</a></li>
-          </ul>
+          </ul> */}
         </div>
 
         

@@ -30,7 +30,7 @@ const Sidebar = () => {
       <LinkStyle to="/register">회원가입</LinkStyle>
       <LinkStyle to="/login">로그인</LinkStyle>
       <LinkStyle to="/mypage">마이페이지</LinkStyle>
-      <LinkStyle to="/board">게시판</LinkStyle>
+      <LinkStyle to="/board">게시판2</LinkStyle>
     </div>
   );
 };

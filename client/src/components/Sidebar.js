@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, useLocation  } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import { Link, useLocation } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 const LinkStyle = styled(Link)`
   padding: 20px;
@@ -17,18 +17,26 @@ const LinkStyle = styled(Link)`
     color: gray;
   }
 
-  ${({ to }) => to === useLocation().pathname && css`
-    color: black;
-    text-decoration: underline;
-  `}
+  ${({ to }) =>
+    to === useLocation().pathname &&
+    css`
+      color: black;
+      text-decoration: underline;
+    `}
 `;
 
 const Sidebar = () => {
-  
   return (
-    <div style={{ backgroundColor: '#FF9F1C', height: '500px', display: 'flex', flexDirection: 'column' }}>
-      <LinkStyle to="/register">회원가입</LinkStyle>
-      <LinkStyle to="/login">로그인</LinkStyle>
+    <div
+      style={{
+        backgroundColor: "#FF9F1C",
+        height: "500px",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <LinkStyle to="/api/user">회원가입</LinkStyle>
+      <LinkStyle to="/api/login">로그인</LinkStyle>
       <LinkStyle to="/mypage">마이페이지</LinkStyle>
       <LinkStyle to="/board">게시판2</LinkStyle>
     </div>

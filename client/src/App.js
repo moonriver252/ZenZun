@@ -17,8 +17,8 @@ function App() {
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <Sidebar />
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/api" element={<Homepage />} />
+        <Route path="/api/user" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/board" element={<Board />} />

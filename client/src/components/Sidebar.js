@@ -1,39 +1,36 @@
-import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link, useLocation  } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+
+const LinkStyle = styled(Link)`
+  padding: 20px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: black;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: gray;
+  }
+
+  ${({ to }) => to === useLocation().pathname && css`
+    color: black;
+    text-decoration: underline;
+  `}
+`;
 
 const Sidebar = () => {
-  const [hovered, setHovered] = useState(false);
-  const [clicked, setClicked] = useState(false);
-
-  const linkStyle = {
-    padding: '20px',
-    color: hovered || clicked ? 'black' : 'white',
-    textDecoration: 'none',
-    transition: 'color 0.3s ease',
-  }
-
-  const handleHover = () => {
-    setHovered(!hovered);
-  }
-
-  const handleClick = () => {
-    setClicked(!clicked);
-  }
-
+  
   return (
     <div style={{ backgroundColor: '#FF9F1C', height: '500px', display: 'flex', flexDirection: 'column' }}>
-      <Link to="/register" style={linkStyle} onMouseEnter={handleHover} onMouseLeave={handleHover} onClick={handleClick}>
-        회원가입
-      </Link>
-      <Link to="/login" style={linkStyle} onMouseEnter={handleHover} onMouseLeave={handleHover} onClick={handleClick}>
-        로그인
-      </Link>
-      <Link to="/contact" style={linkStyle} onMouseEnter={handleHover} onMouseLeave={handleHover} onClick={handleClick}>
-        마이페이지
-      </Link>
-      <Link to="/contact" style={linkStyle} onMouseEnter={handleHover} onMouseLeave={handleHover} onClick={handleClick}>
-        게시판
-      </Link>
+      <LinkStyle to="/register">회원가입</LinkStyle>
+      <LinkStyle to="/login">로그인</LinkStyle>
+      <LinkStyle to="/mypage">마이페이지</LinkStyle>
+      <LinkStyle to="/board">게시판</LinkStyle>
     </div>
   );
 };

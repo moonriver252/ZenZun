@@ -39,6 +39,8 @@ class UserService {
     return createdNewUser;
   }
 
+
+
   //로그인
   async getUserToken(loginInfo) {
     const { email, password } = loginInfo;

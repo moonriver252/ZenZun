@@ -1,5 +1,5 @@
 //sequelize를 사용해 express와 MySQL을 연결
-
+const cors = require('cors');
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
@@ -9,6 +9,9 @@ const {userRouter, boardRouter, mailRouter } = require('./routers')
 const { sequelize } = require('./db');
 
 const app = express();
+
+// CORS 에러 방지
+app.use(cors());
 
 
 sequelize.sync({ force: false })

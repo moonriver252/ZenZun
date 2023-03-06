@@ -101,6 +101,12 @@
 
 
 
+
+
+
+
+
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -202,3 +208,103 @@ const Register = () => {
 };
 
 export default Register;
+
+
+// import React, { useState } from 'react';
+// import axios from 'axios';
+// import styled from 'styled-components';
+
+
+// const SignupForm = styled.form`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   margin-top: 50px;
+// `;
+
+// const InputContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   margin-bottom: 20px;
+// `;
+
+// const Input = styled.input`
+//   padding: 10px;
+//   border: 1px solid gray;
+//   border-radius: 5px;
+//   width: 300px;
+//   transition: border-color 0.3s ease-in-out;
+
+//   &:focus {
+//     outline: none;
+//     border-color: blue;
+//   }
+// `;
+
+// const Button = styled.button`
+//   padding: 10px;
+//   background-color: #ccc;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   transition: background-color 0.3s ease-in-out;
+
+//   &:hover {
+//     background-color: lightgray;
+//   }
+
+//   &:active {
+//     background-color: gray;
+//   }
+// `;
+
+// function Signup() {
+//   const [email, setEmail] = useState('');
+//   const [nickname, setNickname] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const handleEmailChange = (event) => {
+//     setEmail(event.target.value);
+//   };
+
+//   const handleNicknameChange = (event) => {
+//     setNickname(event.target.value);
+//   };
+
+//   const handlePasswordChange = (event) => {
+//     setPassword(event.target.value);
+//   };
+
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+//     try {
+//       const response = await axios.post('http://localhost:3000/api/user', { email, nickname, password });
+//       console.log(response);
+//       // 회원가입 성공시 처리
+//     } catch (error) {
+//       console.log(error);
+//       // 회원가입 실패시 처리
+//     }
+//   };
+
+//   return (
+//     <SignupForm onSubmit={handleSubmit}>
+//       <InputContainer>
+//         <label>Email</label>
+//         <Input type="email" value={email} onChange={handleEmailChange} />
+//       </InputContainer>
+//       <InputContainer>
+//         <label>Nickname</label>
+//         <Input type="text" value={nickname} onChange={handleNicknameChange} />
+//       </InputContainer>
+//       <InputContainer>
+//         <label>Password</label>
+//         <Input type="password" value={password} onChange={handlePasswordChange} />
+//       </InputContainer>
+//       <Button type="submit">OK</Button>
+//     </SignupForm>
+//   );
+// }
+
+// export default Signup;

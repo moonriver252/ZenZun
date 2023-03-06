@@ -91,10 +91,12 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:3000/api/login', { email, password });
       console.log(response);
-      // 로그인 성공 시 처리할 코드
-    } catch (error) {
-      console.log(error);
-      // 로그인 실패 시 처리할 코드
+      alert('로그인에 성공했습니다.');
+    // 로그인에 성공하면 다른 페이지로 이동
+    window.location.href = '/api/login';
+  } catch (error) {
+    alert('로그인에 실패했습니다.');
+    console.error(error);
     }
   };
 

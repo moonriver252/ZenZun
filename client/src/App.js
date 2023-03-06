@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/api" element={<Homepage />} />
         <Route path="/api/user" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/api/login" element={<Login />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/board" element={<Board />} />
         <Route path="/page/:id" />

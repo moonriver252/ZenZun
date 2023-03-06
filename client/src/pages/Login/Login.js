@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -81,12 +83,35 @@ const SocialButton = styled.button`
 `;
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:3000/api/login', { email, password });
+      console.log(response);
+      // 로그인 성공 시 처리할 코드
+    } catch (error) {
+      console.log(error);
+      // 로그인 실패 시 처리할 코드
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
   return (
     <LoginWrapper>
-      <FormWrapper>
-        <Input type="text" placeholder="ID" />
-        <Input type="password" placeholder="Password" />
-        <Button>OK</Button>
+      <FormWrapper onSubmit={handleSubmit}>
+        <Input type="text" placeholder="Email" value={email} onChange={handleEmailChange} />
+        <Input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+        <Button type="submit">OK</Button>
       </FormWrapper>
       <SocialWrapper>
         <SocialButton color="#3b5998" hoverColor="#2f477a">
